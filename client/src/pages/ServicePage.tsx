@@ -229,6 +229,38 @@ const ServicePage = () => {
       <Helmet>
         <title>{service.title} | Servicios de Impresión IMPACTO33</title>
         <meta name="description" content={service.description} />
+        
+        {/* Schema Markup: Service */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": service.title,
+            "description": service.longDescription,
+            "provider": {
+              "@type": "Organization",
+              "name": "IMPACTO33",
+              "url": "https://impacto33.com"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Spain"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicios de Personalización",
+              "itemListElement": service.features.map(feature => ({
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": feature
+                }
+              }))
+            }
+          })}
+        </script>
+
+        {/* Schema Markup: FAQPage */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -241,6 +273,34 @@ const ServicePage = () => {
                 "text": faq.answer
               }
             }))
+          })}
+        </script>
+
+        {/* Schema Markup: BreadcrumbList */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://impacto33.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Servicios",
+                "item": "https://impacto33.com/#servicios"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": service.title,
+                "item": `https://impacto33.com/servicios/${slug}`
+              }
+            ]
           })}
         </script>
       </Helmet>

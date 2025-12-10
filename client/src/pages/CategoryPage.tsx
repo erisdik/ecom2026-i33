@@ -89,31 +89,37 @@ export default function CategoryPage() {
         <meta name="description" content={categoryData.meta_description} />
         <link rel="canonical" href={`https://impacto33.com${categoryData.url}`} />
         
-        {/* Schema Markup: BreadcrumbList */}
+        {/* Schema Markup: CollectionPage + BreadcrumbList */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Inicio",
-                "item": "https://impacto33.com/"
-              },
-              ...(categoryData.parent_slug ? [{
-                "@type": "ListItem",
-                "position": 2,
-                "name": categoryData.parent_slug.replace(/-/g, ' '),
-                "item": `https://impacto33.com/${categoryData.parent_slug}/`
-              }] : []),
-              {
-                "@type": "ListItem",
-                "position": categoryData.parent_slug ? 3 : 2,
-                "name": categoryData.hero_tituloPrincipal,
-                "item": `https://impacto33.com${categoryData.url}`
-              }
-            ]
+            "@type": "CollectionPage",
+            "name": categoryData.hero_tituloPrincipal,
+            "description": categoryData.meta_description,
+            "url": `https://impacto33.com${categoryData.url}`,
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Inicio",
+                  "item": "https://impacto33.com/"
+                },
+                ...(categoryData.parent_slug ? [{
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": categoryData.parent_slug.replace(/-/g, ' '),
+                  "item": `https://impacto33.com/${categoryData.parent_slug}/`
+                }] : []),
+                {
+                  "@type": "ListItem",
+                  "position": categoryData.parent_slug ? 3 : 2,
+                  "name": categoryData.hero_tituloPrincipal,
+                  "item": `https://impacto33.com${categoryData.url}`
+                }
+              ]
+            }
           })}
         </script>
 

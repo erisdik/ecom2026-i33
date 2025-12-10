@@ -129,6 +129,58 @@ export default function ProductPage() {
         <meta property="og:image" content={mainImage} />
         <meta property="og:url" content={`https://impacto33.com/producto/${product.slug}`} />
         <meta property="og:type" content="product" />
+
+        {/* Schema Markup: Product */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": product.name,
+            "image": [mainImage, ...(product.galleryImages?.nodes.map(img => img.sourceUrl) || [])],
+            "description": product.shortDescription?.replace(/<[^>]*>/g, '') || `Compra ${product.name} personalizado en IMPACTO33.`,
+            "sku": product.slug,
+            "brand": {
+              "@type": "Brand",
+              "name": "IMPACTO33"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": `https://impacto33.com/producto/${product.slug}`,
+              "priceCurrency": "EUR",
+              "price": currentPrice ? parseFloat(currentPrice.replace(/[^0-9.,]/g, '').replace(',', '.')) : 0,
+              "availability": isOutOfStock ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+            }
+          })}
+        </script>
+
+        {/* Schema Markup: BreadcrumbList */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://impacto33.com/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Productos",
+                "item": "https://impacto33.com/productos/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": product.name,
+                "item": `https://impacto33.com/producto/${product.slug}`
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <div className="bg-white min-h-screen pb-20">

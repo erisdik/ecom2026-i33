@@ -60,6 +60,11 @@ export default function Home() {
     "name": "IMPACTO33",
     "url": "https://impacto33.com",
     "logo": "https://impacto33.com/images/logo-impacto33.png",
+    "description": "Artículos promocionales y regalos publicitarios personalizados para empresas.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "ES"
+    },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+34690906027",
@@ -73,11 +78,26 @@ export default function Home() {
       "https://twitter.com/impacto33"
     ]
   };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "IMPACTO33",
+    "url": "https://impacto33.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://impacto33.com/buscar?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
   return (
     <div className="flex flex-col min-h-screen">
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(organizationSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(websiteSchema)}
         </script>
       </Helmet>
 

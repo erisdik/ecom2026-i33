@@ -12,6 +12,40 @@ export default function ContactPage() {
       <Helmet>
         <title>Contacto | IMPACTO33</title>
         <meta name="description" content="Contacta con IMPACTO33 para tus regalos personalizados de empresa." />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contacto IMPACTO33",
+            "description": "Página de contacto de IMPACTO33, especialistas en regalos personalizados.",
+            "url": "https://impacto33.com/contacto",
+            "mainEntity": {
+              "@type": "LocalBusiness",
+              "name": "IMPACTO33",
+              "image": "https://impacto33.com/images/logo-impacto33.png",
+              "telephone": "+34690906027",
+              "email": "info@impacto33.com",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "ES"
+              },
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  "opens": "09:00",
+                  "closes": "14:00"
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                  "opens": "15:00",
+                  "closes": "18:00"
+                }
+              ]
+            }
+          })}
+        </script>
       </Helmet>
 
       <div className="bg-slate-50 min-h-screen py-12">
