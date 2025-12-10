@@ -178,22 +178,22 @@ export default function Home() {
                 { name: "Sudaderas", img: "categoria-sudaderas.webp", link: "/sudaderas-personalizadas/", alt: "Sudaderas personalizadas con logo corporativo" },
                 { name: "Polos", img: "categoria-polos.webp", link: "/polos-personalizados/", alt: "Polos bordados y serigrafiados para uniformes" },
                 { name: "Chaquetas", img: "categoria-chaquetas.webp", link: "/chaquetas-personalizadas/", alt: "Chaquetas y ropa de abrigo personalizada" },
-                { name: "Ropa deportiva", img: "categoria-camisetas-tecnicas.webp", link: "/ropa-deportiva-personalizada/", alt: "Camisetas técnicas y equipaciones deportivas personalizadas" },
-                { name: "Ropa laboral", img: "categoria-ropa-vestuario-laboral.webp", link: "/ropa-laboral-personalizada/", alt: "Vestuario laboral y uniformes de trabajo personalizados" },
+                { name: "Ropa deportiva", img: "categoria-camisetas-tecnicas.webp", link: "/ropa-deportiva-personalizadas/", alt: "Camisetas técnicas y equipaciones deportivas personalizadas" },
+                { name: "Ropa laboral", img: "categoria-ropa-vestuario-laboral.webp", link: "/ropa-laboral-personalizadas/", alt: "Vestuario laboral y uniformes de trabajo personalizados" },
                 
                 { name: "Tazas", img: "categoria-tazas.webp", link: "/tazas-personalizadas/", alt: "Tazas personalizadas con foto o logo para publicidad" },
                 { name: "Libretas", img: "categoria-libretas.webp", link: "/libretas-personalizadas/", alt: "Libretas y cuadernos corporativos personalizados" },
-                { name: "Usb", img: "categoria-memorias-usb.webp", link: "/memorias-usb-personalizadas/", alt: "Memorias USB y pendrives personalizados para regalo" },
-                { name: "Bidones", img: "categoria-bidones-botellas.webp", link: "/botellas-personalizadas/", alt: "Botellas y bidones de agua personalizados con logo" },
+                { name: "Usb", img: "categoria-memorias-usb.webp", link: "/tecnologia-personalizada/memorias-usb/", alt: "Memorias USB y pendrives personalizados para regalo" },
+                { name: "Bidones", img: "categoria-bidones-botellas.webp", link: "/tazas-personalizadas/botellas/", alt: "Botellas y bidones de agua personalizados con logo" },
                 { name: "Bolsas de tela", img: "categoria-bolsas.webp", link: "/bolsas-personalizadas/", alt: "Bolsas de tela y tote bags personalizadas para ferias" },
-                { name: "Llaveros", img: "categoria-llaveros.webp", link: "/llaveros-personalizados/", alt: "Llaveros publicitarios personalizados baratos" },
+                { name: "Llaveros", img: "categoria-llaveros.webp", link: "/merchandising-personalizado/llaveros/", alt: "Llaveros publicitarios personalizados baratos" },
                 
-                { name: "Chapas personalizadas", img: "categoria-chapas.webp", link: "/chapas-personalizadas/", alt: "Chapas personalizadas para eventos y campañas" },
-                { name: "Imanes personalizados", img: "categoria-imanes.webp", link: "/imanes-personalizados/", alt: "Imanes de nevera personalizados publicitarios" },
-                { name: "Pegatinas", img: "categoria-pegatinas.webp", link: "/pegatinas-personalizadas/", alt: "Pegatinas y adhesivos personalizados en vinilo" },
-                { name: "Lanyards personalizados", img: "categoria-lanyards.webp", link: "/lanyards-personalizados/", alt: "Lanyards y cintas de acreditación personalizadas" },
+                { name: "Chapas personalizadas", img: "categoria-chapas.webp", link: "/merchandising-personalizado/chapas/", alt: "Chapas personalizadas para eventos y campañas" },
+                { name: "Imanes personalizados", img: "categoria-imanes.webp", link: "/merchandising-personalizado/imanes/", alt: "Imanes de nevera personalizados publicitarios" },
+                { name: "Pegatinas", img: "categoria-pegatinas.webp", link: "/merchandising-personalizado/pegatinas/", alt: "Pegatinas y adhesivos personalizados en vinilo" },
+                { name: "Lanyards personalizados", img: "categoria-lanyards.webp", link: "/merchandising-personalizado/lanyards/", alt: "Lanyards y cintas de acreditación personalizadas" },
                 { name: "Gorras para personalizar", img: "categoria-gorras.webp", link: "/gorras-personalizadas/", alt: "Gorras bordadas y personalizadas para publicidad" },
-                { name: "Artículos para Fiestas", img: "categoria-articulos-para-fiestas.webp", link: "/articulos-fiestas-personalizados/", alt: "Artículos de fiesta y cotillón personalizados" },
+                { name: "Artículos para Fiestas", img: "categoria-articulos-para-fiestas.webp", link: "/merchandising-personalizado/fiestas/", alt: "Artículos de fiesta y cotillón personalizados" },
               ].map((cat, idx) => (
                 <Link key={idx} href={cat.link}>
                   <div className="flex flex-col items-center group cursor-pointer min-w-[140px] snap-center">
