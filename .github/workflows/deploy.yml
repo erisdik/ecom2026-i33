@@ -22,8 +22,7 @@ jobs:
 
     # 3. Instalar dependencias (Con el fix para tu error ERESOLVE)
     - name: 📦 Install dependencies
-      #run: npm install --legacy-peer-deps
-      run: npm install
+      run: npm install --legacy-peer-deps
 
     # 4. Construir el sitio (Genera la carpeta dist o build)
     - name: 🏗️ Build project
