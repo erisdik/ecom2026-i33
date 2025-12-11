@@ -29,6 +29,7 @@ jobs:
       # AGREGA ESTO: Inyectamos las variables para que Vite las vea
       env:
         VITE_ANALYTICS_ENDPOINT: ${{ secrets.VITE_ANALYTICS_ENDPOINT }}
+        VITE_GRAPHQL_URI: ${{ secrets.VITE_GRAPHQL_URI }}
       run: npm run build
 
 # 5. Subir a Plesk via SFTP (Puerto 22)
