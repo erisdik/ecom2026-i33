@@ -28,7 +28,7 @@ jobs:
     - name: 🏗️ Build project
       run: npm run build
 
-    # 5. Subir a Plesk via FTP
+# 5. Subir a Plesk via FTP
     - name: 📂 Sync files to Plesk
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
@@ -37,9 +37,11 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ 
         server-dir: /httpdocs/
-        # AQUÍ ESTÁ EL CAMBIO:
+        # AGREGA ESTAS DOS LÍNEAS:
+        port: 21
+        protocol: ftp
+        # MANTÉN EL EXCLUDE:
         exclude: |
           **/.htaccess
           **/.ftpquota
-          **/web.config
-          
+          **/web.config    
