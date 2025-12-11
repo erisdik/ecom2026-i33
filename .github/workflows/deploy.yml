@@ -36,11 +36,11 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         password: ${{ secrets.FTP_PASSWORD }}
         
-        # IMPORTANTE: El asterisco al final copia el CONTENIDO de dist, no la carpeta dist
+        # Sube el contenido de dist
         local_path: './dist/*'
         
-        # La carpeta en tu servidor
-        remote_path: '/httpdocs/'
+        # CAMBIO CRUCIAL: 'httpdocs/' sin la barra al inicio
+        remote_path: 'httpdocs/'
         
-        # Opciones extra para asegurar la conexión
-        sftp_args: '-o ConnectTimeout=10 -o StrictHostKeyChecking=no'
+        # Corrección del nombre del argumento (sftpArgs)
+        sftpArgs: '-o ConnectTimeout=10 -o StrictHostKeyChecking=no'
