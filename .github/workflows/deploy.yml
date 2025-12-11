@@ -37,11 +37,17 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/ 
         server-dir: /httpdocs/
-        # AGREGA ESTAS DOS LÍNEAS:
-        port: 21
+        
+        # --- CONFIGURACIÓN DE CONEXIÓN ---
+        # Usamos el puerto estándar 21
+        port: 21 
+        # Forzamos protocolo FTP simple (no sftp, no ftps por ahora)
         protocol: ftp
-        # MANTÉN EL EXCLUDE:
+        # Desactivamos la verificación estricta de SSL (evita timeouts por certificados)
+        security: false
+        
+        # --- ARCHIVOS A IGNORAR ---
         exclude: |
           **/.htaccess
           **/.ftpquota
-          **/web.config    
+          **/web.config
