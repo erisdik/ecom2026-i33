@@ -37,11 +37,12 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/
         server-dir: /httpdocs/
-        port: 21
-        protocol: ftp
-        # CORRECCIÓN 1: Usar 'loose' para evitar validación estricta de SSL
-        security: loose
-        # CORRECCIÓN 2: Formato correcto para múltiples líneas (nota el | )
+        
+        # --- CAMBIO IMPORTANTE: MODO SFTP ---
+        port: 22
+        protocol: sftp
+        
+        # En SFTP no necesitamos definir 'security', pero mantenemos el exclude
         exclude: |
           **/.htaccess
           **/.ftpquota
