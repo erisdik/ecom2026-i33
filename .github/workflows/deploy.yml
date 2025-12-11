@@ -35,18 +35,13 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/ 
+        local-dir: ./dist/
         server-dir: /httpdocs/
-        
-        # --- CONFIGURACIÓN DE CONEXIÓN ---
-        # Usamos el puerto estándar 21
-        port: 21 
-        # Forzamos protocolo FTP simple (no sftp, no ftps por ahora)
+        port: 21
         protocol: ftp
-        # Desactivamos la verificación estricta de SSL (evita timeouts por certificados)
-        security: false
-        
-        # --- ARCHIVOS A IGNORAR ---
+        # CORRECCIÓN 1: Usar 'loose' para evitar validación estricta de SSL
+        security: loose
+        # CORRECCIÓN 2: Formato correcto para múltiples líneas (nota el | )
         exclude: |
           **/.htaccess
           **/.ftpquota
