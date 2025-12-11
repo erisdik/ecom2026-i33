@@ -28,22 +28,19 @@ jobs:
     - name: 🏗️ Build project
       run: npm run build
 
-# 5. Subir a Plesk via FTP
-    - name: 📂 Sync files to Plesk
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+# 5. Subir a Plesk via SFTP (Puerto 22)
+    - name: 📂 SFTP Deploy
+      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
       with:
-        server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
+        server: ${{ secrets.FTP_SERVER }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/
-        server-dir: /httpdocs/
         
-        # --- CAMBIO IMPORTANTE: MODO SFTP ---
-        port: 22
-        protocol: sftp
+        # IMPORTANTE: El asterisco al final copia el CONTENIDO de dist, no la carpeta dist
+        local_path: './dist/*'
         
-        # En SFTP no necesitamos definir 'security', pero mantenemos el exclude
-        exclude: |
-          **/.htaccess
-          **/.ftpquota
-          **/web.config
+        # La carpeta en tu servidor
+        remote_path: '/httpdocs/'
+        
+        # Opciones extra para asegurar la conexión
+        sftp_args: '-o ConnectTimeout=10 -o StrictHostKeyChecking=no'
