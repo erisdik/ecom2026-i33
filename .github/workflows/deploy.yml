@@ -24,8 +24,11 @@ jobs:
     - name: 📦 Install dependencies
       run: npm install --legacy-peer-deps
 
-    # 4. Construir el sitio (Genera la carpeta dist o build)
+# 4. Construir el sitio
     - name: 🏗️ Build project
+      # AGREGA ESTO: Inyectamos las variables para que Vite las vea
+      env:
+        VITE_ANALYTICS_ENDPOINT: ${{ secrets.VITE_ANALYTICS_ENDPOINT }}
       run: npm run build
 
 # 5. Subir a Plesk via SFTP (Puerto 22)
