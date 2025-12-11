@@ -1,0 +1,44 @@
+name: Deploy React to Plesk
+
+on:
+  push:
+    branches:
+      - main  # O 'master', revisa cómo se llama tu rama principal
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Descargar el código
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
+
+    # 2. Instalar Node.js (Usamos la v20 para compatibilidad con React 19)
+    - name: 🟢 Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    # 3. Instalar dependencias (Con el fix para tu error ERESOLVE)
+    - name: 📦 Install dependencies
+      run: npm install --legacy-peer-deps
+
+    # 4. Construir el sitio (Genera la carpeta dist o build)
+    - name: 🏗️ Build project
+      run: npm run build
+
+    # 5. Subir a Plesk via FTP
+    - name: 📂 Sync files to Plesk
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./dist/ 
+        server-dir: /httpdocs/
+        # AQUÍ ESTÁ EL CAMBIO:
+        exclude: |
+          **/.htaccess
+          **/.ftpquota
+          **/web.config
